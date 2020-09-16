@@ -3,6 +3,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/lrstanley/girc"
 	"log"
 	"os"
@@ -25,8 +26,8 @@ func main() {
 	})
 
 	client.Handlers.Add(girc.PRIVMSG, func(c *girc.Client, e girc.Event) {
-		if strings.Contains(e.Last(), "hello") {
-			c.Cmd.ReplyTo(e, "hello world!")
+		if strings.Contains(e.Last(), "add") {
+			c.Cmd.ReplyTo(e, fmt.Sprintf("%s", e.Last()))
 			return
 		}
 
